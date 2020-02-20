@@ -1,0 +1,109 @@
+﻿@model IEnumerable<WCRC.Models.ResetEvent>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="form-horizontal">
+    <div class="form-group">
+        <div class="col-md-2">
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+        </div>
+        <div class="col-md-2">
+            @Html.ActionLink("Delete All", "DeleteAll", null, new { @class = "btn btn-danger" })
+        </div>
+    </div>
+</div>
+@using (Html.BeginForm("DeleteByName", "ResetEvent"))
+{
+<div class="form-horizontal">
+    <div class="form-group">
+        @Html.Label("name", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.Editor("name", "form-control")
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="DeleteByName" class="btn btn-warning" />
+        </div>
+    </div>
+</div>
+}
+@using (Html.BeginForm("MakeEvent", "ResetEvent"))
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.Label("name", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Editor("name", "form-control")
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("start", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Editor("start", "form-control")
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("end", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Editor("end", "form-control")
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="CreateEvent" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.guid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.resourceId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.start)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.guid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.resourceId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.start)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.guid }) |
+                @Html.ActionLink("Details", "Details", new { id = item.guid }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.guid })
+            </td>
+        </tr>
+    }
+
+</table>

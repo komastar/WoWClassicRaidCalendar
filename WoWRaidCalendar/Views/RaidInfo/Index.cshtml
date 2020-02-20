@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WCRC.Models.RaidInfo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.guid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isThurReset)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.term)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.start)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.resourceId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.guid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isThurReset)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.term)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.start)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.resourceId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.guid }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.guid })
+        </td>
+    </tr>
+}
+
+</table>

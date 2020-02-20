@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158285999-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-158285999-1');
+    </script>
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WoW Classic Raid Calendar</title>
+    @Styles.Render("~/FullCalendar/fullcalendarcss")
+</head>
+<body>
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-collapse collapse">
+                    <div class="row">
+                        <div class="col-lg-1">
+                            @Html.ActionLink("Home", "Index", "Home", null, new { @class = "btn btn-primary" })
+                        </div>
+                        <div class="col-lg-1">
+                            @Html.ActionLink("Raid Info", "Index", "RaidInfo", null, new { @class = "btn btn-info" })
+                        </div>
+                        <div class="col-lg-2">
+                            @Html.ActionLink("Reset Event", "Index", "ResetEvent", null, new { @class = "btn btn-info" })
+                        </div>
+                        <div class="col-lg-1">
+                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, null))
+                            {
+                                @Html.AntiForgeryToken()
+                                @:<input type="submit" value="LogOff" class="btn btn-warning" />
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - WoWClassicRaidCalendar</p>
+        </footer>
+    </div>
+    @Scripts.Render("~/FullCalendar/fullcalendarjs")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
