@@ -184,6 +184,11 @@ namespace WCRC.Controllers
                 }
                 else
                 {
+                    while (startDate > termDate)
+                    {
+                        termDate = termDate.AddDays(info.term);
+                    }
+
                     if (startDate == termDate)
                     {
                         var newEvent = new ResetEvent(info.name, startDate, info.resourceId);

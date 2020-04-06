@@ -4,7 +4,30 @@
 
 @section scripts {
     <script type="text/javascript">
-var calendarEl=document.getElementById('calendar');var calendar=new FullCalendar.Calendar(calendarEl,{plugins:['resourceDayGrid'],defaultView:'dayGridMonth',themeSystem:'bootstrap',height:'parent',weekNumbers:true,weekNumbersWithinDays:true,schedulerLicenseKey:'GPL-My-Project-Is-Open-Source',resources:[{id:'m',title:'Molten Core',eventColor:'red'},{id:'b',title:'Blackwing Lair',eventColor:'black'},{id:'o',title:'Onyxia',eventColor:'purple'},{id:'z',title:'Zul\'Gurub',eventColor:'green'},{id:'n',title:'Naxxramas',eventColor:'blue'},{id:'t',title:'TempleOfAhn\'Qiraj',eventColor:'grey'},{id:'r',title:'RuinsOfAhn\'Qiraj',eventColor:'orange'}],events:'/home/getevents'});calendar.render();
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl,
+            {
+                plugins: ['resourceDayGrid'],
+                titleFormat: { year: 'numeric', month: '2-digit' },
+                defaultView: 'dayGridMonth',
+                themeSystem: 'bootstrap',
+                height: 700,
+                schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
+                resources:
+                    [
+                        { id: 'm', title: 'Molten Core', eventColor: 'red' },
+                        { id: 'b', title: 'Blackwing Lair', eventColor: 'black' },
+                        { id: 'o', title: 'Onyxia', eventColor: 'purple' },
+                        { id: 'z', title: 'Zul\'Gurub', eventColor: 'green' },
+                        { id: 'n', title: 'Naxxramas', eventColor: 'blue' },
+                        { id: 't', title: 'TempleOfAhn\'Qiraj', eventColor: 'grey' },
+                        { id: 'r', title: 'RuinsOfAhn\'Qiraj', eventColor: 'orange' },
+                        { id: 'dkmm', title: 'DarkmoonM', eventColor: '#9587DD' },
+                        { id: 'dkme', title: 'DarkmoonE', eventColor: '#9587DD' }
+                    ],
+                events: '/home/getevents'
+            });
+        calendar.render();
     </script>
 }
 
